@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.awt.*;
-import java.time.LocalDate;
 
 
 @Entity
@@ -17,13 +15,14 @@ public class Product {
     private long id;
 
 
-    private float prijs;
+    private double prijs;
     private String categorie;
-    private String voorraad;
+    private int voorraad;
     private String leverancier;
     private String productfoto;
     private String productbeschrijving;
     private String beoordeling;
+    private String maat;
 
     public long getId() {
         return id;
@@ -33,11 +32,11 @@ public class Product {
         this.id = id;
     }
 
-    public float getPrijs() {
+    public double getPrijs() {
         return prijs;
     }
 
-    public void setPrijs(float prijs) {
+    public void setPrijs(double prijs) {
         this.prijs = prijs;
     }
 
@@ -49,11 +48,11 @@ public class Product {
         this.categorie = categorie;
     }
 
-    public String getVoorraad() {
+    public int getVoorraad() {
         return voorraad;
     }
 
-    public void setVoorraad(String voorraad) {
+    public void setVoorraad(int voorraad) {
         this.voorraad = voorraad;
     }
 
@@ -89,6 +88,13 @@ public class Product {
         this.beoordeling = beoordeling;
     }
 
+    public String getMaat() {
+        return maat;
+    }
+
+    public void setMaat(String maat) {
+        this.maat = maat;
+    }
 
 
 }

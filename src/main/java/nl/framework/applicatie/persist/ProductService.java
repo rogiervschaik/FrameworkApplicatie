@@ -20,4 +20,12 @@ public class ProductService {
         System.out.println("find all producten");
         return pr.findAll();
     }
+
+    public void bewaarProduct(Product product) {
+        pr.save(product);
+    }
+
+    public void verwijderProduct(long productid) {
+        pr.deleteById(productid);
+    }
 }
