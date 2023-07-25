@@ -48,13 +48,6 @@ public class ProductEndpoint {
         System.out.println("Dit is een andere methode");
         return "alle beoordelingen";
     }
-
-    @GetMapping("producten/{mijnvar}/{mijnvar2}")
-    public String MijnMethode3(@PathVariable("mijnvar") String onzevar) {
-        System.out.println("Dit is de derde methode" + onzevar);
-        return "tekst";
-    }
-
     @GetMapping("alleproducten")
     public Iterable<Product> alleProducten() {
         System.out.println("Dit is een andere methode");
@@ -62,7 +55,16 @@ public class ProductEndpoint {
     }
     @PostMapping("voegproductentoe")
     public void voegProductenToe(@RequestBody Product product){
-        System.out.println(product.getLeverancier());
+        ps.bewaarProduct(product);
+    }
+
+    @PutMapping("bewerkproducten")
+    public void bewerkProducten(){
+
+    }
+    @DeleteMapping("verwijderproducten/{productid}")
+    public void verwijderProducten(@PathVariable("productid") int productid){
+    ps.verwijderProduct(productid);
     }
 }
 
