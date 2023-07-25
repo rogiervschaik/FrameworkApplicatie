@@ -12,13 +12,12 @@ public class ProductService {
 
     public void gaIetsDoen(String x){
         Product nieuwinvoer = new Product();
-        //nieuwinvoer.setx(x);
         pr.save(nieuwinvoer);
         System.out.println("lukt het?" + x);
 
     }
-    public Iterable<Product> w() {
-        System.out.println("Producten in service");
+    public Iterable<Product> geefAlleProducten() {
+        System.out.println("find all producten");
         return pr.findAll();
     }
 }
