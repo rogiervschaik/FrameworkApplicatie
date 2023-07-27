@@ -58,10 +58,29 @@ public class ProductEndpoint {
         ps.bewaarProduct(product);
     }
 
-    @PutMapping("bewerkproducten")
-    public void bewerkProducten(){
+  @PutMapping("bewerkproducten/{productid}")
+    public void bewerkProducten(@PathVariable("productid") int productid, @RequestBody Product updatedProduct) {
 
+        Product existingProduct = ps.updateProduct(productid);
+
+        if (existingProduct != null) {
+            existingProduct.setNaam(updatedProduct.getNaam());
+            existingProduct.setPrijs(updatedProduct.getPrijs());
+            existingProduct.setCategorie(updatedProduct.getCategorie());
+            existingProduct.setLeverancier(updatedProduct.getLeverancier());
+            existingProduct.setProductfoto(updatedProduct.getProductfoto());
+            existingProduct.setProductbeschrijving(updatedProduct.getProductbeschrijving());
+            existingProduct.setBeoordeling(updatedProduct.getBeoordeling());
+
+
+            ps.bewaarProduct(existingProduct);
+        } else {
+
+            System.out.println("Product with ID " + productid + " not found.");
+        }
     }
+
+
     @DeleteMapping("verwijderproducten/{productid}")
     public void verwijderProducten(@PathVariable("productid") int productid){
     ps.verwijderProduct(productid);

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualisatie Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Visualisatie Data</h1>
+    <table id="storeData">
+        <thead>
+            <tr>
+                <th>categorie</th>
+                <th>getal</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Data fetched from the server will be added here -->
+        </tbody>
+    </table>
+<div style="width: 400px; height: 300px; border: 1px;"><canvas id="productCategoryChart" width="400" height="200"></canvas></div>
+    
+
+    <script>
+        fetch("http://localhost:8082/alleproducten")
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('tableBody');
+            const productCategories = {}; // Create an object to store categories and their "getal" values
+
+            data.forEach(row => {
+                const newRow = document.createElement('tr');
+                const columnsToDisplay = ["categorie", "getal"];
+
+                columnsToDisplay.forEach(column => {
+                    const cell = document.createElement('td');
+                    cell.textContent = row[column];
+                    newRow.appendChild(cell);
+                });
+
+                tableBody.appendChild(newRow);
+
+                // Store the "getal" value associated with the category
+                const category = row["categorie"];
+                const getalValue = parseFloat(row["getal"]); // Assuming "getal" is a numerical value
+                if (!isNaN(getalValue)) {
+                    if (!productCategories[category]) {
+                        productCategories[category] = [];
+                    }
+                    productCategories[category].push(getalValue);
+                }
+            });
+
+            // Calculate the average "getal" value for each category
+            const averageGetalByCategory = {};
+            for (const category in productCategories) {
+                const getalValues = productCategories[category];
+                const total = getalValues.reduce((acc, value) => acc + value, 0);
+                const average = total / getalValues.length;
+                averageGetalByCategory[category] = average;
+            }
+
+            // Get the canvas element and create the chart
+            const ctx = document.getElementById('productCategoryChart').getContext('2d');
+            const productCategoryChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(averageGetalByCategory),
+                    datasets: [{
+                        label: 'Average "getal" value per category',
+                        data: Object.values(averageGetalByCategory),
+                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'red', 'blue', 'green', 'yellow', 'pink'], // You can customize the colors here
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    </script>
+</body>
+</html>
