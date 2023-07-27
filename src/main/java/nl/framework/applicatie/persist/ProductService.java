@@ -28,4 +28,13 @@ public class ProductService {
     public void verwijderProduct(long productid) {
         pr.deleteById(productid);
     }
+
+    public Product updateProduct(long productid) {
+
+        Product existingProduct = pr.findById(productid).orElse(null);
+
+        return existingProduct;
+    }
+
 }
+

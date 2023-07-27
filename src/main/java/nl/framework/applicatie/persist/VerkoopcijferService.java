@@ -1,5 +1,6 @@
 package nl.framework.applicatie.persist;
 
+import nl.framework.applicatie.domein.Verkoopcijfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,5 +8,9 @@ import org.springframework.stereotype.Service;
 public class VerkoopcijferService {
 
     @Autowired
-    ProductRepository vcr;
+    VerkoopcijferRepository vcr;
+
+    public Iterable<Verkoopcijfer> geefAlleVerkoopcijfers(){
+        return vcr.findAll();
+    }
 }
