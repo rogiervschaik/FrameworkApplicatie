@@ -71,7 +71,8 @@ public class ProductEndpoint {
             existingProduct.setProductfoto(updatedProduct.getProductfoto());
             existingProduct.setProductbeschrijving(updatedProduct.getProductbeschrijving());
             existingProduct.setBeoordeling(updatedProduct.getBeoordeling());
-
+            existingProduct.setVoorraad(updatedProduct.getVoorraad());
+            existingProduct.setMaat(updatedProduct.getMaat());
 
             ps.bewaarProduct(existingProduct);
         } else {
