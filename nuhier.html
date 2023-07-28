@@ -208,12 +208,16 @@ function updateproduct() {
     });
 }
 
+function laatproductenzien() {
+    const table = document.getElementById("storeData");
+    table.style.display = "table";
+}
     </script>
 
 <h1>Productenlijst</h1>
 
 
-id: <input id="idinput"><br>
+id:                     <input id="idinput"><br>
 leverancier:            <input id="levinput"><br>
 naam:                   <input id="naaminput"><br>
 categorie:              <input id="catinput"><br>
@@ -223,12 +227,15 @@ productbeschrijving:    <input id="pbinput"><br>
 productfoto:            <input id="pfinput"><br>
 voorraad:               <input id="voorraadinput"><br>
 
+
 <br>
 <button onclick="opslaanproduct()">opslaan</button>
 <br>
-<button onclick="verwijderproduct()">verwijder</button>
+<button onclick="laatproductenzien()">laat producten zien</button>
 <br>
 <button onclick="updateproduct()">update</button>
+<br>
+<button onclick="verwijderproduct()">verwijder</button>
 <br>
 <div id="waarhetnaartoemoet"></div>
 <br>
@@ -237,14 +244,14 @@ voorraad:               <input id="voorraadinput"><br>
 
 
 <h2>Tabel</h2>
-<table id="storeData">
+<table id="storeData" style="display: none; border: 1px solid black">
     <thead>
         <tr>
             <th>id</th>
             <th>leverancier</th>
             <th>naam</th>
             <th>categorie</th>
-            <th>maat</th>
+            <th>maat</th>a
             <th>prijs</th>
             <th>productbeschrijving</th>
             <th>productfoto</th>
