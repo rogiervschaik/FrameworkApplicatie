@@ -17,22 +17,22 @@ public class AccountEndpoint {
         return as.vindAlleAccounts();
     }
 
-    @PostMapping("api/accounts")
+    @PostMapping("api/saveaccounts")
     public Account saveAccount(@RequestBody Account account) {
         return as.saveAccount(account);
     }
 
-    @PutMapping("api/accounts/{id}")
+    @PutMapping("api/updateaccounts/{id}")
     public Account updateAccount(@PathVariable Long id, @RequestBody Account updatedAccount) {
         return as.updateAccount(updatedAccount);
     }
 
-    @GetMapping("api/accounts/{id}")
+    @GetMapping("api/findaccounts/{id}")
     public Account getAccountById(@PathVariable Long id) {
         return as.getAccountById(id);
     }
 
-    @DeleteMapping("api/accounts/{id}")
+    @DeleteMapping("api/deleteaccounts/{id}")
     public void deleteAccount(@PathVariable Long id) {
         as.deleteAccount(id);
     }
