@@ -19,7 +19,7 @@ public class AccountEndpoint {
 
     @PostMapping("api/accounts")
     public Account saveAccount(@RequestBody Account account) {
-        return as.saveAccount2(account);
+        return as.saveAccount3(account);
     }
 
     @PutMapping("api/accounts/{id}")
