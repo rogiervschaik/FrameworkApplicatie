@@ -18,7 +18,7 @@ public class AccountService {
         return ar.findAll();
     }
 
-    public Account saveAccount(Account account) {
+    public Account saveAccount2(Account account) {
         return ar.save(account);
     }
 
