@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Productenlijst</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -214,62 +215,115 @@ function laatproductenzien() {
 }
     </script>
 
-<h1>Productenlijst</h1>
-
-
-id:                     <input id="idinput"><br>
-leverancier:            <input id="levinput"><br>
-naam:                   <input id="naaminput"><br>
-categorie:              <input id="catinput"><br>
-maat:                   <input id="maatinput"><br>
-prijs:                  <input id="prijsinput"><br>
-productbeschrijving:    <input id="pbinput"><br>
-productfoto:            <input id="pfinput"><br>
-voorraad:               <input id="voorraadinput"><br>
-
-
-<br>
-<button onclick="opslaanproduct()">opslaan</button>
-<br>
-<button onclick="laatproductenzien()">laat producten zien</button>
-<br>
-<button onclick="updateproduct()">update</button>
-<br>
-<button onclick="verwijderproduct()">verwijder</button>
-<br>
-<div id="waarhetnaartoemoet"></div>
-<br>
 
 
 
-
-<h2>Tabel</h2>
-
-<table id="storeData" style="display: none; border: 1px solid black">
-
-    <thead>
+<div class="container">
+    <div class="col-12"> <h1>Productenlijst</h1> </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3"><table>
         <tr>
-            <th>id</th>
-            <th>leverancier</th>
-            <th>naam</th>
-            <th>categorie</th>
-            <th>maat</th>a
-            <th>prijs</th>
-            <th>productbeschrijving</th>
-            <th>productfoto</th>
-            <th>voorraad</th>
-            
+          <th>Veld</th>
+          <th>Waarde</th>
         </tr>
-    </thead>
+        <tr>
+          <td>id:</td>
+          <td><input id="idinput"></td>
+        </tr>
+        <tr>
+          <td>leverancier:</td>
+          <td><input id="levinput"></td>
+        </tr>
+        <tr>
+          <td>naam:</td>
+          <td><input id="naaminput"></td>
+        </tr>
+        <tr>
+          <td>categorie:</td>
+          <td><input id="catinput"></td>
+        </tr>
+        <tr>
+          <td>maat:</td>
+          <td><input id="maatinput"></td>
+        </tr>
+        <tr>
+          <td>prijs:</td>
+          <td><input id="prijsinput"></td>
+        </tr>
+        <tr>
+          <td>productbeschrijving:</td>
+          <td><input id="pbinput"></td>
+        </tr>
+        <tr>
+          <td>productfoto:</td>
+          <td><input id="pfinput"></td>
+        </tr>
+        <tr>
+          <td>voorraad:</td>
+          <td><input id="voorraadinput"></td>
+        </tr>
+      </table>
+      </div>
+      <div class="row">
+      <div class="col-12 col-md-6 col-lg-3">
+        <br>
+        <button type="button" class="btn btn-dark" onclick="opslaanproduct()">opslaan</button>
+        <br>
+        <button type="button" class="btn btn-dark" onclick="laatproductenzien()">laat producten zien</button>
+        <br>
+        <button type="button" class="btn btn-dark" onclick="updateproduct()">update</button>
+        <br>
+        <button type="button" class="btn btn-dark" onclick="verwijderproduct()">verwijder</button>
+        <br>
+        <div id="waarhetnaartoemoet"></div>
+        <br></div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <h2>Tabel</h2>
+        </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <table id="storeData" style="display: none; border: 1px solid black">
+
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>leverancier</th>
+                <th>naam</th>
+                <th>categorie</th>
+                <th>maat</th>a
+                <th>prijs</th>
+                <th>productbeschrijving</th>
+                <th>productfoto</th>
+                <th>voorraad</th>
+                
+            </tr>
+        </thead>
+        
     
+        <tbody id="tableBody">
+            <!-- Data fetched from the server will be added here -->
+        </tbody>
+    </table>
+    <br>
+    
+    <div style="width: 400px; height: 300px; border: 1px;"><canvas id="productCategoryChart" width="400" height="200"></canvas></div></div>
+    </div>
+  </div>
 
-    <tbody id="tableBody">
-        <!-- Data fetched from the server will be added here -->
-    </tbody>
-</table>
-<br>
 
-<div style="width: 400px; height: 300px; border: 1px;"><canvas id="productCategoryChart" width="400" height="200"></canvas></div>
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

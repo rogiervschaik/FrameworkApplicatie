@@ -22,6 +22,37 @@ public class AccountService {
     }
 
 
-    // update methode al verwerkt in opsla methode
-
+    // public class AccountService {
+    //
+    //    private final Map<Long, Account> accountsMap = new HashMap<>();
+    //    private final AtomicLong accountIdGenerator = new AtomicLong(1);
+    //
+    //    public Iterable<Account> vindAlleAccounts() {
+    //        return accountsMap.values();
+    //    }
+    //
+    //    public Account saveAccount(Account account) {
+    //        long newId = accountIdGenerator.getAndIncrement();
+    //        account.setId(newId);
+    //        accountsMap.put(newId, account);
+    //        return account;
+    //    }
+    //
+    //    public Account updateAccount(Long id, Account updatedAccount) {
+    //        if (accountsMap.containsKey(id)) {
+    //            updatedAccount.setId(id);
+    //            accountsMap.put(id, updatedAccount);
+    //            return updatedAccount;
+    //        }
+    //        return null;
+    //    }
+    //
+    //    public Account getAccountById(Long id) {
+    //        return accountsMap.get(id);
+    //    }
+    //
+    //    public void deleteAccount(Long id) {
+    //        accountsMap.remove(id);
+    //    }
+    //b
 }
