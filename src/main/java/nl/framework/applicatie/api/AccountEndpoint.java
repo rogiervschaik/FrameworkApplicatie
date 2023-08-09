@@ -12,26 +12,27 @@ public class AccountEndpoint {
     @Autowired
     private AccountService as;
 
-    @GetMapping ("accounts")
+    @GetMapping("api/accounts")
     public Iterable<Account> methodeVindAccounts() {
         return as.vindAlleAccounts();
     }
-    @PostMapping("accounts")
+
+    @PostMapping("api/accounts")
     public Account saveAccount(@RequestBody Account account) {
         return as.saveAccount(account);
     }
 
-    @PutMapping("accounts/{id}")
+    @PutMapping("api/accounts/{id}")
     public Account updateAccount(@PathVariable Long id, @RequestBody Account updatedAccount) {
-        return as.updateAccount(id, updatedAccount);
+        return as.updateAccount(updatedAccount);
     }
 
-    @GetMapping("accounts/{id}")
+    @GetMapping("api/accounts/{id}")
     public Account getAccountById(@PathVariable Long id) {
         return as.getAccountById(id);
     }
 
-    @DeleteMapping("accounts/{id}")
+    @DeleteMapping("api/accounts/{id}")
     public void deleteAccount(@PathVariable Long id) {
         as.deleteAccount(id);
     }
