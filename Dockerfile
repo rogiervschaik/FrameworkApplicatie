@@ -8,5 +8,5 @@ RUN cp target/*jar target/app.jar
 FROM openjdk:18-ea-11-jdk-alpine3.15
 USER 1000
 ENTRYPOINT ["java","-jar", "./app.jar"]
-EXPOSE 8080
+EXPOSE 8082
 COPY --from=build /usr/src/scaffolded/target/app.jar app.jar
