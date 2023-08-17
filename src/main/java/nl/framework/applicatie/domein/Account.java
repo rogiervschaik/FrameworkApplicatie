@@ -22,6 +22,8 @@ public class Account {
     private String wachtwoord;
     @Column(length = 150, nullable = true)
     private String gender;
+    @OneToOne(mappedBy = "account")
+    private ShoppingCart shoppingCart;
 
     public long getId() {
         return id;
