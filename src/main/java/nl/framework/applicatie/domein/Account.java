@@ -72,4 +72,13 @@ public class Account {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    
+    public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+    
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+    
 }
