@@ -22,6 +22,8 @@ public class Account {
     private String wachtwoord;
     @Column(length = 150, nullable = true)
     private String gender;
+    @OneToOne(mappedBy = "account")
+    private ShoppingCart shoppingCart;
 
     public long getId() {
         return id;
@@ -70,4 +72,13 @@ public class Account {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    
+    public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+    
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+    
 }
