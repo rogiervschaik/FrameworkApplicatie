@@ -1,12 +1,9 @@
 package nl.framework.applicatie.persist;
 
-import nl.framework.applicatie.domein.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
+import nl.framework.applicatie.domein.Account;
 
 @Service
 public class AccountService {
@@ -33,4 +30,5 @@ public class AccountService {
     public Account getAccountById(Long id) {
         return ar.findById(id).orElse(null);
     }
+
 }

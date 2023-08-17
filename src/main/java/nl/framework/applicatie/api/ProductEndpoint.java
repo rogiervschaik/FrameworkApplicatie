@@ -1,11 +1,16 @@
 package nl.framework.applicatie.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import nl.framework.applicatie.domein.Product;
 import nl.framework.applicatie.persist.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 
 @RestController
 public class ProductEndpoint {
@@ -48,11 +53,13 @@ public class ProductEndpoint {
         System.out.println("Dit is een andere methode");
         return "alle beoordelingen";
     }
+    
     @GetMapping("alleproducten")
     public Iterable<Product> alleProducten() {
         System.out.println("Dit is een andere methode");
         return ps.geefAlleProducten();
     }
+    
     @PostMapping("voegproductentoe")
     public void voegProductenToe(@RequestBody Product product){
         ps.bewaarProduct(product);

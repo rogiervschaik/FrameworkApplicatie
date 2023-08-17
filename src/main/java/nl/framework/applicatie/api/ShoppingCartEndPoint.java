@@ -20,19 +20,20 @@ public class ShoppingCartEndPoint {
 	@PostMapping("/api/shoppingcart/addproduct")
 	public boolean addToShoppingCart(@RequestBody AddProductDto dto ) {
 		// In praktijk ga je als eerst checken of iemand is ingelogd of niet
-		
+
 		// Daarna validatie. In ons geval hebben we alleen int's dus die 
 		// zijn altijd ingevuld (Niet null). 
-		
+
 		// Vertel de service om een shoppingcart entry aan te maken
 		// Een service doet het meeste reken werk. 
 		boolean gelukt = shoppingCartService.addProductToShoppingCart(dto.getAccountId(), dto.getProductId(), dto.getAmount());
 
 		return gelukt;
 	}
-	
+
 	@GetMapping("/api/shoppingcart/{accountId}/entry/count")
 	public long countShoppingCartEntry(@PathVariable long accountId) {
 		return this.shoppingCartService.countShoppingCartEntries(accountId);
 	}
+
 }
