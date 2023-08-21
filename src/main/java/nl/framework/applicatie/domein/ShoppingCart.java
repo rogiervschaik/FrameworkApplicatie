@@ -11,16 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class ShoppingCart {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	
+
+	@JsonIgnore
 	@OneToOne(optional = false, orphanRemoval = true)
 	private Account account;
-	
+
 	@Column(nullable = false)
 	private ZonedDateTime created;
 	

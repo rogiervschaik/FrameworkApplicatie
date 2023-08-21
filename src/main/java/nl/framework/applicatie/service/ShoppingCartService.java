@@ -82,4 +82,12 @@ public class ShoppingCartService {
 		return this.iShoppingCartEntryDAO.countByShoppingCart(shoppingCart);
 	}
 	
+	public Optional<ShoppingCartEntry> getShoppingCartEntry(long id) {
+		return this.iShoppingCartEntryDAO.findById(id);
+	}
+	
+	public void deleteShoppingCartEntry(ShoppingCartEntry shoppingCartEntry) {
+		this.iShoppingCartEntryDAO.delete(shoppingCartEntry);
+	}
+	
 }
