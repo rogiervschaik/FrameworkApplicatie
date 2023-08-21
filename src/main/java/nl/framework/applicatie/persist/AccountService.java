@@ -31,4 +31,11 @@ public class AccountService {
         return ar.findById(id).orElse(null);
     }
 
+    /* public Account getAccountByUsername(String username) {
+        return ar.findByUsername(username);
+    }
+
+    public Account gePassword(String password) {
+        return ar.findPassword(password);
+    } */
 }

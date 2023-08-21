@@ -12,14 +12,15 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(length = 150, nullable = false)
-    private String naam;
+    private String username;
     @Column(length = 150, nullable = false)
     private int leeftijd;
     @Column(length = 150, nullable = false)
     private String email;
     @Column(length = 150, nullable = false)
-    private String wachtwoord;
+    private String password;
     @Column(length = 150, nullable = true)
     private String gender;
     @OneToOne(mappedBy = "account")
@@ -33,12 +34,12 @@ public class Account {
         this.id = id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getLeeftijd() {
@@ -57,12 +58,12 @@ public class Account {
         this.email = email;
     }
 
-    public String getWachtwoord() {
-        return wachtwoord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getGender() {
