@@ -1,11 +1,13 @@
 package nl.framework.applicatie.domein;
 
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,7 +29,7 @@ public class Account {
     private String gender;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "account", optional = true, orphanRemoval = true)
+    @OneToOne(mappedBy = "account", cascade = { CascadeType.REMOVE, CascadeType.DETACH }, optional = true, orphanRemoval = true)
     private ShoppingCart shoppingCart;
 
     public String getNaam() {

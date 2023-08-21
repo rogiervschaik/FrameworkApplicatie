@@ -3,6 +3,7 @@ package nl.framework.applicatie.domein;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class ShoppingCart {
 	@Column(nullable = false)
 	private ZonedDateTime created;
 	
-	@OneToMany(mappedBy = "shoppingCart", orphanRemoval = true)
+	@OneToMany(mappedBy = "shoppingCart", cascade = { CascadeType.REMOVE, CascadeType.DETACH }, orphanRemoval = true)
 	private List<ShoppingCartEntry> entries;
 
 	public long getId() {
