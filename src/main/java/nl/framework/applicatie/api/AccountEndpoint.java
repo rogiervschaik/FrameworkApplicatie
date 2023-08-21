@@ -3,7 +3,11 @@ package nl.framework.applicatie.api;
 
 import nl.framework.applicatie.domein.Account;
 import nl.framework.applicatie.persist.AccountService;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,7 +28,22 @@ public class AccountEndpoint {
 
     @PutMapping("api/updateaccounts/{id}")
     public Account updateAccount(@PathVariable Long id, @RequestBody Account updatedAccount) {
-        return as.updateAccount(updatedAccount);
+    	Account account = this.as.getAccountById(id);
+    	if (account == null)
+    		return null;
+    	
+    	if (StringUtils.hasLength(updatedAccount.getEmail()))
+    		account.setEmail(updatedAccount.getEmail());
+    	if (StringUtils.hasLength(updatedAccount.getPassword()))
+    		account.setPassword(updatedAccount.getPassword());
+    	if (StringUtils.hasLength(updatedAccount.getGender()))
+    		account.setGender(updatedAccount.getGender());
+    	if (StringUtils.hasLength(updatedAccount.getNaam()))
+    		account.setNaam(updatedAccount.getNaam());
+
+    	account.setLeeftijd(updatedAccount.getLeeftijd());
+
+        return as.updateAccount(account);
     }
 
     @GetMapping("api/findaccounts/{id}")

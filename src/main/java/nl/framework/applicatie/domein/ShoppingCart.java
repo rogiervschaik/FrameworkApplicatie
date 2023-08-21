@@ -27,7 +27,7 @@ public class ShoppingCart {
 	@Column(nullable = false)
 	private ZonedDateTime created;
 	
-	@OneToMany(mappedBy = "shoppingCart")
+	@OneToMany(mappedBy = "shoppingCart", orphanRemoval = true)
 	private List<ShoppingCartEntry> entries;
 
 	public long getId() {
