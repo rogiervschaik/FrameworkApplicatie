@@ -1,14 +1,21 @@
 package nl.framework.applicatie.api;
 
 
-import nl.framework.applicatie.domein.Account;
-import nl.framework.applicatie.persist.AccountService;
-
-import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import nl.framework.applicatie.domein.Account;
+import nl.framework.applicatie.dto.LoginRequestDto;
+import nl.framework.applicatie.persist.AccountService;
 
 @RestController
 public class AccountEndpoint {
@@ -71,4 +78,20 @@ public class AccountEndpoint {
     public void deleteAccount(@PathVariable Long id) {
         as.deleteAccount(id);
     }
+
+    @GetMapping("/api/account/current")
+    public Account deleteAccount(HttpServletRequest request) {
+        return (Account)request.getAttribute("AUTH");
+    }
+
+    @PostMapping("/api/account/login")
+    public String login(@RequestBody LoginRequestDto dto) {
+    	Account account = this.as.login(dto.getEmail(), dto.getPassword());
+    	if (account == null) {
+    		return null;
+    	}
+
+    	return account.getToken();
+    }
+
 }

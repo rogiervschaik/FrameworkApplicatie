@@ -28,6 +28,9 @@ public class Account {
     @Column(length = 150, nullable = true)
     private String gender;
 
+    @Column(length = 150, nullable = true)
+    private String token;
+
     @JsonIgnore
     @OneToOne(mappedBy = "account", cascade = { CascadeType.REMOVE, CascadeType.DETACH }, optional = true, orphanRemoval = true)
     private ShoppingCart shoppingCart;
@@ -86,6 +89,14 @@ public class Account {
     
     public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+    
+    public String getToken() {
+		return token;
+	}
+    
+    public void setToken(String token) {
+		this.token = token;
 	}
     
 }
