@@ -1,10 +1,17 @@
 package nl.framework.applicatie.persist;
 
-import nl.framework.applicatie.domein.Account;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
+import java.util.Optional;
 
-@Component
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import nl.framework.applicatie.domein.Account;
+
+@Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
+
+   Optional<Account> findByEmailAndPassword(String username, String password);
+
+   Optional<Account> findByToken(String token);
 
 }

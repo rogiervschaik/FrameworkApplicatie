@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class ShoppingCartEntry {
 
@@ -14,6 +16,7 @@ public class ShoppingCartEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+	@JsonIgnore
 	@ManyToOne(optional = false)
 	private ShoppingCart shoppingCart;
 	

@@ -3,6 +3,7 @@ package nl.framework.applicatie.domein;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,20 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class ShoppingCart {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	
+
+	@JsonIgnore
 	@OneToOne(optional = false, orphanRemoval = true)
 	private Account account;
-	
+
 	@Column(nullable = false)
 	private ZonedDateTime created;
 	
-	@OneToMany(mappedBy = "shoppingCart")
+	@OneToMany(mappedBy = "shoppingCart", cascade = { CascadeType.REMOVE, CascadeType.DETACH }, orphanRemoval = true)
 	private List<ShoppingCartEntry> entries;
 
 	public long getId() {
