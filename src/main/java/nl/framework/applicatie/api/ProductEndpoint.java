@@ -65,7 +65,7 @@ public class ProductEndpoint {
         ps.bewaarProduct(product);
     }
 
-  @PutMapping("bewerkproducten/{productid}")
+    @PutMapping("bewerkproducten/{productid}")
     public void bewerkProducten(@PathVariable("productid") int productid, @RequestBody Product updatedProduct) {
 
         Product existingProduct = ps.updateProduct(productid);
@@ -87,7 +87,6 @@ public class ProductEndpoint {
             System.out.println("Product with ID " + productid + " not found.");
         }
     }
-
 
     @DeleteMapping("verwijderproducten/{productid}")
     public void verwijderProducten(@PathVariable("productid") int productid){
