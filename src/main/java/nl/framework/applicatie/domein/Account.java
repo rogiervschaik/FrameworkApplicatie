@@ -1,11 +1,15 @@
 package nl.framework.applicatie.domein;
 
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Account {
@@ -14,7 +18,7 @@ public class Account {
     private long id;
 
     @Column(length = 150, nullable = false)
-    private String username;
+    private String naam;
     @Column(length = 150, nullable = false)
     private int leeftijd;
     @Column(length = 150, nullable = false)
@@ -23,8 +27,21 @@ public class Account {
     private String password;
     @Column(length = 150, nullable = true)
     private String gender;
-    @OneToOne(mappedBy = "account")
+
+    @Column(length = 150, nullable = true)
+    private String token;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "account", cascade = { CascadeType.REMOVE, CascadeType.DETACH }, optional = true, orphanRemoval = true)
     private ShoppingCart shoppingCart;
+
+    public String getNaam() {
+		return naam;
+	}
+    
+    public void setNaam(String naam) {
+		this.naam = naam;
+	}
 
     public long getId() {
         return id;
@@ -32,14 +49,6 @@ public class Account {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public int getLeeftijd() {
@@ -80,6 +89,14 @@ public class Account {
     
     public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+    
+    public String getToken() {
+		return token;
+	}
+    
+    public void setToken(String token) {
+		this.token = token;
 	}
     
 }
