@@ -58,21 +58,6 @@ public class AccountEndpoint {
         return as.getAccountById(id);
     }
 
-    /* @GetMapping("api/findaccount/{username}")
-    public Account getAccountByUsername(@PathVariable String username) {
-        return as.getAccountByUsername(username);
-    }
-
-    @GetMapping("api/findaccount/{password}")
-    public Account getPassword(@PathVariable String password) {
-        return as.gePassword(password);
-    }
-
-    @GetMapping("api/findaccount/{username}/{password}")
-    public Account authenticate(@PathVariable String username, String password) {
-        return as.getAccountByUsername(username).getPassword(password);
-    }
-    */
 
     @DeleteMapping("api/deleteaccounts/{id}")
     public void deleteAccount(@PathVariable Long id) {
