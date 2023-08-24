@@ -51,7 +51,7 @@ public class ShoppingCartEndPoint {
 	public List<ShoppingCartEntry> getShoppingCartEntries(@PathVariable long accountId) {
 		Account account = this.accountService.getAccountById(accountId);
 
-		if (account != null) {
+		if (account != null && account.getShoppingCart() != null) {
 			return account.getShoppingCart().getEntries();
 		}
 
