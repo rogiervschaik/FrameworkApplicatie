@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nl.framework.applicatie.domein.Account;
 import nl.framework.applicatie.dto.LoginRequestDto;
+import nl.framework.applicatie.dto.LoginResponseDto;
 import nl.framework.applicatie.persist.AccountService;
 
 @RestController
@@ -70,13 +71,13 @@ public class AccountEndpoint {
     }
 
     @PostMapping("/api/account/login")
-    public String login(@RequestBody LoginRequestDto dto) {
+    public LoginResponseDto login(@RequestBody LoginRequestDto dto) {
     	Account account = this.as.login(dto.getEmail(), dto.getPassword());
     	if (account == null) {
     		return null;
     	}
 
-    	return account.getToken();
+    	return new LoginResponseDto(account.getId(), account.getToken());
     }
 
 }
