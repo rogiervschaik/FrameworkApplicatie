@@ -1,5 +1,6 @@
 package nl.framework.applicatie.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,12 +50,12 @@ public class ShoppingCartEndPoint {
 	@GetMapping("/api/shoppingcart/{accountId}/entries")
 	public List<ShoppingCartEntry> getShoppingCartEntries(@PathVariable long accountId) {
 		Account account = this.accountService.getAccountById(accountId);
-		
+
 		if (account != null) {
 			return account.getShoppingCart().getEntries();
 		}
-		
-		return null;
+
+		return new ArrayList<>();
 	}
 
 	@DeleteMapping("/api/shoppingcart/entry/{entryId}")
